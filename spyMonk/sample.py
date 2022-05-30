@@ -1,5 +1,5 @@
-sample_database = {
-    "tablename": "spymonkdb",
+dummy_Database = {
+    "tablename": "spyMonkDB",
     "table": [
         {
             "test_name": "spyMonk",

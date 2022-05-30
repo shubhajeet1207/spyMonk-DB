@@ -5,20 +5,17 @@ import random
 import webbrowser
 
 from typing import Any, Callable, List, Dict, Tuple
-from .sample import sample_database
+from .sample import dummy_Database
 from .errors import EmptyDatabaseError, InvalidQueryError
 from .validate import validate
 from .filehelper import opendatabase, closedatabase
 from .query import Query
 
 
-class Pydb:
-    def __init__(self, connection="pydb", tablename="spymonkdb"):
-        """
-        create new database in current directory
-        if connection isnt found then new database
-        is created
-        """
+class spyMonkDB:
+    def __init__(self, connection="spyMonkDB", tablename="spyMonkDB"):
+        # create new database in current directory if connection isn't found then new database is created
+
         self.cached_bool = False
         self.cached = None
         self.filter_bool = False
@@ -35,8 +32,8 @@ class Pydb:
             self.db_path = pathlib.Path(self.connection).resolve()
             with open(self.db_path, "w") as f:
                 f.truncate(0)
-                sample_database["tablename"] = tablename
-                f.write(json.dumps(sample_database, indent=4))
+                dummy_Database["tablename"] = tablename
+                f.write(json.dumps(dummy_Database, indent=4))
         self.db_path = pathlib.Path(self.connection).resolve()
         logfile = file.parent / "db.log"
         logging.basicConfig(
