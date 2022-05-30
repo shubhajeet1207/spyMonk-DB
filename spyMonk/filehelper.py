@@ -1,7 +1,7 @@
 import json
 import mmap
 import pathlib
-from .errors import EmptyDatabaseError, EmptyTableError
+from .errors import EmptyDatabaseError, EmptyTableError, JSONDecodingError
 
 
 class opendatabase():
