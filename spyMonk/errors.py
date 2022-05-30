@@ -16,3 +16,21 @@ class EmptyTableError(Exception):
         super().__init__(self.message)
 
 
+class InvalidQueryError(Exception):
+
+    # Exception raised when query is invalid
+
+    def __init__(self, message):
+        self.message = message
+        super().__init__("InvalidQuery: {}".format(self.message))
+
+
+class ValidationError(Exception):
+
+    # Exception raised when parameter validation issue occurs
+
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
+
+
