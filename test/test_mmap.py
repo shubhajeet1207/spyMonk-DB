@@ -2,7 +2,7 @@ import mmap
 import json
 import pathlib
 
-filepath = pathlib.Path("Users.json").resolve()
+filepath = pathlib.Path("users.json").resolve()
 
 print(filepath)
 

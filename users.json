@@ -1,0 +1,26 @@
+{
+    "tablename": "spyMonkDB",
+    "table": [
+        {
+            "test_name": "spyMonk",
+            "test_age": 21,
+            "test_cool": true,
+            "test_sad": false,
+            "test_money": null,
+            "test_array": [
+                "Shubhajeet",
+                24,
+                23.23,
+                true,
+                false,
+                null,
+                {
+                    "Hemllo": "Booyah"
+                }
+            ],
+            "test_dictionary": {
+                "Hemllo": "Booyah"
+            }
+        }
+    ]
+}

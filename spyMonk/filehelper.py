@@ -23,7 +23,7 @@ class opendatabase():
 
         if data["table"] == [] and self.empty_table == True:
             raise EmptyTableError
-        return (data, self.file)
+        return data, self.file
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
         # self.file.close()

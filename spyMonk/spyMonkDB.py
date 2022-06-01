@@ -115,17 +115,12 @@ class spyMonkDB:
 
     # Most common commands
     def insert(self, *new):
-        """insert a column into database
+        """
+        insert a column into database
         tuple(dict) -> json -> into file
-
-        Raises:
-            InvalidQueryError: [description]
-
-        Returns:
-            str: "OK"
         """
 
-        validate(new, tuple, "new argument must be type dict")
+        validate(new, tuple, "new argument must be dict type")
         logging.debug("insert: {}".format(*new))
         try:
             with opendatabase(self.db_path, "r+", empty_table=False) as (data, f):
@@ -141,17 +136,8 @@ class spyMonkDB:
             raise InvalidQueryError("Insert Query Error: {}".format(e))
 
     def update(self, set_, where):
-        """update specific column/s in database
-        SQL equivalent:
-            UPDATE **TABLENAME** SET column1 = value1, ... WHERE column1 = value1;
-        Args:
-            set (dict): the key/s and value/s you want to change
-            where (dict): the identifying key, value pair
-        Raises:
-            EmptyDatabaseError: [description]
-            InvalidQueryError: [description]
-        Returns:
-            str: str: "OK"
+        """
+         update the specific column/s in database
         """
         validate(set_, dict, "change argument must be type dict")
         validate(where, dict, "where argument must be type dict")
@@ -170,20 +156,11 @@ class spyMonkDB:
 
     # -result causing commands
     def select(self, where):
-        """select specific column/s in database
-        #result causing
-        SQL equivalent:
-            SELECT column, ... FROM **TABLENAME**
-        Args:
-            where (list): the identifying key, value pair
-        Raises:
-            EmptyDatabaseError: [description]
-            InvalidQueryError: [description]
-        Returns:
-            List[Dict[str, Any]]: [description]
+        """
+        select specific column/s in database
         """
 
-        validate(where, list, "where argument must be type dict")
+        validate(where, list, "where argument must be dict type")
         result = []
         logging.debug("where: {}".format(where))
         try:
@@ -204,15 +181,8 @@ class spyMonkDB:
             raise InvalidQueryError("Insert Query Error: {}".format(e))
 
     def selectall(self):
-        """query all data
-        #result causing
-        SQL equivalent
-            SELECT * FROM **TABLENAME**
-        Raises:
-            EmptyDatabaseError: [description]
-            InvalidQueryError: [description]
-        Returns:
-            List[Dict[str, Any]] : all data within database
+        """
+        query all data
         """
         logging.debug("selectall")
         try:
@@ -228,15 +198,11 @@ class spyMonkDB:
         except BaseException as e:
             raise InvalidQueryError("SELECT ALL Query Error: {}".format(e))
 
-    # -irreversible
+
+    # Irreversible function
     def truncate(self):
-        """truncate whole table
-        #CANNOT BE UNDONE
-        SQL equivalent
-            : TRUNCATE TABLE **TABLENAME**;
-        Raises:
-            EmptyDatabaseError: [description]
-            InvalidQueryError: [description]
+        """
+        truncate whole table
         """
         try:
             logging.warning("Delete whole database")
@@ -292,23 +258,6 @@ class spyMonkDB:
     def filter(self, query):
         """
         #cache
-        query data for dict:
-        filter can do and accept:
-        :critical
-        = filter(User.name == 'ed')
-        = filter(User.name != 'ed')
-        = filter(and_(User.name == 'ed', User.fullname == 'Ed Jones'))
-        = filter(or_(User.name == 'ed', User.name == 'wendy'))
-
-        - filter(User.name.like('%ed%'))
-        - filter(User.name.ilike('%ed%'))
-        - filter(User.name.in_(['ed', 'wendy', 'jack']))
-        - filter(User.name.notin_(['ed', 'wendy', 'jack']))
-        - filter(User.name.match('wendy'))
-        - <
-        - <=
-        - >
-        - >=
         """
         self.cached = query
         if self.cached_bool:
