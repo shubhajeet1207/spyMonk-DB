@@ -16,3 +16,6 @@ for x in range(101):
     })
 
 print(round(time.time() - start, 4))
+
+# insert - no mmap - 100 insert - 0.0988 secs
+# insert - no mmap - 1000 insert - 9.0446 secs

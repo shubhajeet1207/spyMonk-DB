@@ -55,13 +55,8 @@ class spyMonkDB:
             return self.selectall()
 
     def limit(self, num):
-        """limit number of results
-
-        Args:
-            num (int): number to limit too
-
-        Returns:
-            List[Dict[str, Any]]: return result
+        """
+        limit number of results
         """
         logging.debug("limit all results to {}".format(num))
         table = self.all()
@@ -95,13 +90,8 @@ class spyMonkDB:
         raise NotImplementedError()
 
     def length(self):
-        """get number of columns in database
-
-        Raises:
-            InvalidQueryError: [description]
-
-        Returns:
-            List[Dict[str, Any]]: return result
+        """
+        get number of columns in database
         """
         logging.debug("Getting total length of database")
         try:
@@ -198,7 +188,6 @@ class spyMonkDB:
         except BaseException as e:
             raise InvalidQueryError("SELECT ALL Query Error: {}".format(e))
 
-
     # Irreversible function
     def truncate(self):
         """
@@ -232,8 +221,8 @@ class spyMonkDB:
 
     # Custom Queries
     def release(self):
-        """release will return the whole table where
-        you can do custom queries
+        """
+        release will return the whole table where we can do our custom queries
         """
         logging.debug("releasing whole database")
         try:
