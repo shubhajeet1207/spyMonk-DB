@@ -123,3 +123,25 @@ for col in table:
 print(query)
 ```
 
+#### function push()
+Delete current database and push given table into database.
+
+Sample usage of **push()**
+```python
+from spyMonk.spyMonkDB import spyMonkDB, Query
+
+db = spyMonkDB(connection="users.json", tablename="spyMonkDB")
+# No need for Query class
+
+table = db.release() #return the whole database: List[Dict[str, Any]]
+query_table = []
+
+for col in table: 
+    if col.get("age") != None and col.get("age") > 20:
+        # get all Users that are 20+
+        query_table.append(col)
+
+db.push(query_table)
+```
+
+
