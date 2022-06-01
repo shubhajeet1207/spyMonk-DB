@@ -1,4 +1,4 @@
-#spyMonkDB
+# spyMonkDB
 
 ### What is the spyMonkDB ?
 Welcome! This project is a simple python3 library that uses .json files as a micro noSQL local database. While it is noSQL based database, it's functions are specifically designed with SQL statements in mind. spyMonkDB also enables you to write more complex and speed efficient queries.
