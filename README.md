@@ -100,3 +100,26 @@ Drop all columns with same key and value
 db.delete({"name": "Shubhajeet"})
 ```
 
+## Complex Queries
+
+#### function release()
+Return the whole table
+
+Sample usage of **release()**
+```python
+from spyMonk.spyMonkDB import spyMonkDB, Query
+
+db = spyMonkDB(connection="users.json", tablename="spyMonkDB")
+# No need for Query class
+
+table = db.release() #return the whole database: List[Dict[str, Any]]
+query = []
+
+for col in table: 
+    if col.get("age") != None and col.get("age") < 20:
+        # get all Users that are 20+
+        query.append(col)
+
+print(query)
+```
+
